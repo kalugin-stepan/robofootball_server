@@ -1,0 +1,17 @@
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\bin\Debug\robofootball_server.deps.json
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\bin\Debug\robofootball_server.runtimeconfig.json
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\bin\Debug\robofootball_server.dll
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\bin\Debug\robofootball_server.pdb
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.csproj.AssemblyReference.cache
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.AssemblyInfoInputs.cache
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.AssemblyInfo.cs
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.csproj.CopyComplete
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.dll
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\refint\robofootball_server.dll
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.pdb
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\robofootball_server.genruntimeconfig.cache
+C:\Users\User\Documents\robofootball_server\.godot\mono\temp\obj\Debug\ref\robofootball_server.dll

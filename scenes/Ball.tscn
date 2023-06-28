@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvyiqd4a4gfkm"]
+
+[ext_resource type="Script" path="res://scripts/Ball.cs" id="1_c7y1l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j5cdn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7g1iq"]
+
+[node name="Ball" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_j5cdn")
+can_sleep = false
+script = ExtResource("1_c7y1l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_7g1iq")

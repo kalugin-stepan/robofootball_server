@@ -1,0 +1,13 @@
+2a60927148abd1d33b818b535e306557
+::res://::1687712822
+::res://assets/::1687315390
+::res://scenes/::1687643934
+Ball.tscn::PackedScene::8683287344628402100::1687326774::0::1::::<><>::res://scripts/Ball.cs
+Main.tscn::PackedScene::3302867600750872512::1687643934::0::1::::<><>::res://scripts/Main.cs<>res://scripts/Goal.cs
+Robot.tscn::PackedScene::5265547174538125467::1687471642::0::1::::<><>::res://scripts/Robot.cs
+::res://scripts/::1687638542
+Ball.cs::CSharpScript::-1::1687324987::0::1::::<><>::
+Goal.cs::CSharpScript::-1::1687624773::0::1::::<><>::
+Main.cs::CSharpScript::-1::1687623166::0::1::::<><>::
+Robot.cs::CSharpScript::-1::1687640541::0::1::::<><>::
+Team.cs::CSharpScript::-1::1687622550::0::1::::<><>::

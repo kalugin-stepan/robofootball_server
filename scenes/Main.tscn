@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnb60nlm8ewsu"]
+
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_driup"]
+[ext_resource type="Script" path="res://scripts/Goal.cs" id="2_tivlv"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_we1ql"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2d3x6"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b7juu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udvn1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ss8jw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3c5i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sqnjp"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_driup")
+
+[node name="walls" type="Node" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/Floor"]
+shape = SubResource("WorldBoundaryShape3D_we1ql")
+
+[node name="back" type="StaticBody3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 5, 0)
+physics_material_override = SubResource("PhysicsMaterial_2d3x6")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="walls/back"]
+use_collision = true
+
+[node name="wall" type="CSGBox3D" parent="walls/back/CSGCombiner3D"]
+size = Vector3(1, 10, 90)
+
+[node name="hole" type="CSGBox3D" parent="walls/back/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0)
+operation = 2
+size = Vector3(1, 3, 10)
+
+[node name="front" type="StaticBody3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 5, 0)
+physics_material_override = SubResource("PhysicsMaterial_2d3x6")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="walls/front"]
+use_collision = true
+
+[node name="wall" type="CSGBox3D" parent="walls/front/CSGCombiner3D"]
+size = Vector3(1, 10, 90)
+
+[node name="hole" type="CSGBox3D" parent="walls/front/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 0)
+operation = 2
+size = Vector3(1, 3, 10)
+
+[node name="left" type="StaticBody3D" parent="walls"]
+transform = Transform3D(120, 0, 0, 0, 10, 0, 0, 0, 1, 0, 5, 45)
+physics_material_override = SubResource("PhysicsMaterial_2d3x6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/left"]
+shape = SubResource("BoxShape3D_b7juu")
+
+[node name="right" type="StaticBody3D" parent="walls"]
+transform = Transform3D(120, 0, 0, 0, 10, 0, 0, 0, 1, 0, 5, -45)
+physics_material_override = SubResource("PhysicsMaterial_2d3x6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/right"]
+shape = SubResource("BoxShape3D_b7juu")
+
+[node name="goals" type="Node" parent="."]
+
+[node name="team1" type="StaticBody3D" parent="goals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+
+[node name="back" type="CollisionShape3D" parent="goals/team1"]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 10, -5, 1.5, 0)
+shape = SubResource("BoxShape3D_udvn1")
+
+[node name="right" type="CollisionShape3D" parent="goals/team1"]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 0.1, -2.5, 1.5, 5)
+shape = SubResource("BoxShape3D_ss8jw")
+
+[node name="left" type="CollisionShape3D" parent="goals/team1"]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 0.1, -2.5, 1.5, -5)
+shape = SubResource("BoxShape3D_ss8jw")
+
+[node name="top" type="CollisionShape3D" parent="goals/team1"]
+transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 10, -2.5, 3, 0)
+shape = SubResource("BoxShape3D_m3c5i")
+
+[node name="Area3D" type="Area3D" parent="goals/team1"]
+script = ExtResource("2_tivlv")
+metadata/team = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="goals/team1/Area3D"]
+transform = Transform3D(3.5, 0, 0, 0, 3, 0, 0, 0, 10, -3.25, 1.5, 0)
+shape = SubResource("BoxShape3D_sqnjp")
+
+[node name="team2" type="StaticBody3D" parent="goals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="back" type="CollisionShape3D" parent="goals/team2"]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 10, 5, 1.5, 0)
+shape = SubResource("BoxShape3D_udvn1")
+
+[node name="right" type="CollisionShape3D" parent="goals/team2"]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 0.1, 2.5, 1.5, 5)
+shape = SubResource("BoxShape3D_ss8jw")
+
+[node name="left" type="CollisionShape3D" parent="goals/team2"]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 0.1, 2.5, 1.5, -5)
+shape = SubResource("BoxShape3D_ss8jw")
+
+[node name="top" type="CollisionShape3D" parent="goals/team2"]
+transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 10, 2.5, 3, 0)
+shape = SubResource("BoxShape3D_m3c5i")
+
+[node name="Area3D" type="Area3D" parent="goals/team2"]
+script = ExtResource("2_tivlv")
+metadata/team = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="goals/team2/Area3D"]
+transform = Transform3D(3.5, 0, 0, 0, 3, 0, 0, 0, 10, 3.25, 1.5, 0)
+shape = SubResource("BoxShape3D_sqnjp")

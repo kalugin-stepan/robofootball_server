@@ -1,0 +1,9 @@
+CollisionShape3D
+Area3D
+StaticBody3D
+Node
+MeshInstance3D
+CSGBox3D
+CSGCombiner3D
+RigidBody3D
+CharacterBody3D
