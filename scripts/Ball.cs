@@ -9,8 +9,5 @@ public partial class Ball : RigidBody3D {
 	public override void _PhysicsProcess(double delta) {
 		float dt = (float)delta;
 		LinearVelocity -= LinearVelocity.Normalized() * friction * dt;
-		Rpc(nameof(UpdateBallData), GlobalPosition, Rotation);
 	}
-	[Rpc(TransferMode = MultiplayerPeer.TransferModeEnum.Unreliable)]
-	void UpdateBallData(Vector3 pos, Vector3 rotation) {}
 }

@@ -2,14 +2,19 @@ using System;
 using Godot;
 
 public partial class Robot : RigidBody3D {
-	Vector2 input;
+	public int id;
+	public string name;
+	public Teams team;
+	public Vector2 input = new Vector2(0, 0);
 	const float airFriction = 1;
 	const float friction = 100;
 	const float wheelAcceleration = 60;
 	float R;
 	float leftSpeed = 0;
 	float rightSpeed = 0;
-	DateTime lastPingTime = DateTime.Now;
+	// DateTime lastPingTime = DateTime.Now;
+	double T = 0;
+	double lastInputTime = 0;
 	public override void _Ready() {
 		Name = GetMultiplayerAuthority().ToString();
 		R = CenterOfMass.DistanceTo(GetNode<Node3D>("wheel_l").Position);
@@ -45,27 +50,15 @@ public partial class Robot : RigidBody3D {
 		var av = AngularVelocity;
 		av.Y = (rightSpeed - leftSpeed) / R;
 		AngularVelocity = av;
-
-		Rpc(nameof(UpdatePlayerData), Position, Rotation.Y);
 	}
 	public override void _Process(double delta) {
-		var curTime = DateTime.Now;
-		if ((curTime - lastPingTime).TotalSeconds > 4) {
-			RpcId(GetMultiplayerAuthority(), nameof(Ping));
-			lastPingTime = curTime;
+		T += delta;
+		if (T - lastInputTime > 0.02) {
+			input = Vector2.Zero;
 		}
 	}
-	
-	[Rpc(TransferMode = MultiplayerPeer.TransferModeEnum.Unreliable)]
-	void SetInput(Vector2 inp) {
-		input = inp;
+	public void UpdateInput(Vector2 input) {
+		this.input = input;
+		lastInputTime = T;
 	}
-	[Rpc(TransferMode = MultiplayerPeer.TransferModeEnum.Unreliable)]
-	void UpdatePlayerData(Vector3 pos, float rotation) {}
-	[Rpc(TransferMode = MultiplayerPeer.TransferModeEnum.Unreliable)]
-	void Ping() {
-		Rpc(nameof(RemoteUpdatePing), (DateTime.Now - lastPingTime).Milliseconds);
-	}
-	[Rpc]
-	void RemoteUpdatePing(int ms) {}
 }

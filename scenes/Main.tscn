@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnb60nlm8ewsu"]
+[gd_scene load_steps=12 format=3 uid="uid://bnb60nlm8ewsu"]
 
-[ext_resource type="Script" path="res://scripts/Main.cs" id="1_driup"]
+[ext_resource type="Script" path="res://scripts/CommandsConfig.cs" id="1_s23cj"]
 [ext_resource type="Script" path="res://scripts/Goal.cs" id="2_tivlv"]
+[ext_resource type="Script" path="res://scripts/GameController.cs" id="3_c5dpe"]
+[ext_resource type="Script" path="res://addons/godot_mqtt_client_cs/MQTT.cs" id="3_thdqq"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_we1ql"]
 
@@ -19,7 +21,9 @@ bounce = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_sqnjp"]
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_driup")
+
+[node name="CommandsConfigLoader" type="Node" parent="."]
+script = ExtResource("1_s23cj")
 
 [node name="walls" type="Node" parent="."]
 
@@ -127,3 +131,13 @@ metadata/team = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="goals/team2/Area3D"]
 transform = Transform3D(3.5, 0, 0, 0, 3, 0, 0, 0, 10, 3.25, 1.5, 0)
 shape = SubResource("BoxShape3D_sqnjp")
+
+[node name="MQTT" type="Node" parent="."]
+script = ExtResource("3_thdqq")
+VerboseLevel = 0
+
+[node name="request" type="HTTPRequest" parent="."]
+accept_gzip = false
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("3_c5dpe")
